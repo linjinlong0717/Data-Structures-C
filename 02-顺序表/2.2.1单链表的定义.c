@@ -16,7 +16,7 @@ typedef struct LNode
 }*LinkList;//LinkList是指向struct LNode类型的指针
 //LNode *L;与LinkList L;是等价的。前者强调这是一个结点，后者强调这是一个链表
 
-1.不带头结点的单链表
+1.不带头结点的单链表(从第一个结点开始)
 //主要代码：
 typedef struct LNode
 {
@@ -33,7 +33,7 @@ bool Empty(LinkList L)
 {
 	return (L == NULL);
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
-2.带头结点的单链表
+2.带头结点的单链表(头结点相当于第零个结点)
 typedef struct LNode
 {
 	ElemType data;
