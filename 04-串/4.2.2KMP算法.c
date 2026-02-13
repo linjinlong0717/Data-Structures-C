@@ -21,7 +21,7 @@ int Index_KMP(SString S, SString T, int next[])
 模式匹配过程最坏时间复杂度O(n)
 
 3.求next数组     
-next[j] = 重复片段长度（最长相等前后缀长度） + 1
+next[j] = 重复片段长度（前 j - 1 个字符构成的子串的最长相等前后缀长度） + 1
 
 4.KMP算法代码完整版(优化前)
 #include <stdio.h>
