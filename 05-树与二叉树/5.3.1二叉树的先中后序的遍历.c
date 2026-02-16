@@ -1,9 +1,5 @@
 Ò»¡¢¶þ²æÊ÷µÄË³Ðò´æ´¢
 #define MaxSize 100
-struct Elemtype
-{
-	int value;
-};
 struct TreeNode
 {
 	struct ElemType value;
