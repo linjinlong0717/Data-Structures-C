@@ -31,7 +31,7 @@ void LevelOrder(BiTree T)
 	EnQueue(&Q, T);
 	while (!IsEmpty(Q))
 	{
-		DeQueue(&Q, &p);
+		DeQueue(&Q, &p); //&p 就是二级指针
 		visit(p);
 		if (p->lchild != NULL) EnQueue(&Q, p->lchild);
 		if (p->rchild != NULL) EnQueue(&Q, p->rchild);
