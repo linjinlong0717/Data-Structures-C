@@ -37,3 +37,4 @@ void BFS_MIN_Distance(Graph G, int u)
 	}
 }
 //通过path数组可以得到最短路径序列
+//BFS算法求单源最短路径只适用于无权图，或所有边的权值都相同的图
