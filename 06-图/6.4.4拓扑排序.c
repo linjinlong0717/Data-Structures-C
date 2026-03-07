@@ -37,15 +37,16 @@ bool TopologicalSort(Graph G)
 	for (int i = 0; i < G.vexnum; i++)
 	{
 		if (indegree[i] == 0)  Push(&S, i);  //indegree[]数组记录当前结点的入度
-		int count = 0;
 	}
+		int count = 0;
 		while (!IsEmpty(S))
 		{
-			Pop(&S, i);
+			int i;
+			Pop(&S, &i);
 			print[count++] = i;  //print[]数组用于记录拓扑序列			
 			for (int p = G.vertices[i].firstarc; p; p = p->nextarc)
 			{
-				v = p->adjvex;
+				int v = p->adjvex;
 				if (!(--indegree[v])) Push(&S, v);  //入度为0，则入栈
 
 			}
