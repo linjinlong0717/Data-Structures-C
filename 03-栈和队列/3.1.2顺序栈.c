@@ -11,7 +11,7 @@ typedef struct
 }SqStack;
 void InitStack(SqStack* S)
 {
-	S->top = -1;  //这里也可以初始化为0
+	S->top = -1;  //这里也可以初始化为0  
 }
 int main ()
 {
@@ -51,7 +51,7 @@ bool GetTop(SqStack S, ElemType * x)
 	return true;
 }
 
-三、共享栈
+三、共享栈  //核心设计是：将数组的两端分别作为两个栈的栈底，两个栈向数组中间生长。
 #define MaxSize 10
 typedef struct
 {
