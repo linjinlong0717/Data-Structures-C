@@ -11,8 +11,19 @@ bool InitDLinkList(DLinkList* L)
 	*L = (DNode*)malloc(sizeof(DNode));
 	if (*L == NULL)
 		return false;
-	(*L)->prior = NULL;
+	(*L)->prior = NULL;         //非循环双链表
 	(*L)->next = NULL;
+	return true;
+}
+
+//也可以这样初始化双链表(双链表类为DLinkList)
+类内初始化
+bool InitDLinkList()
+{
+	head = new DNode;
+	if (head == nullptr) return false;
+	head->next = head;         //循环双链表
+	head->pre = head;
 	return true;
 }
 int main()
