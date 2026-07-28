@@ -29,7 +29,8 @@ bool EnQueue(SqQueue * Q, ElemType x)
 {
 	if (队列已满) return false;
 	Q->data[Q->rear] = x;
-	Q->rear = (Q->rear + 1)%MaxSize; //这里取余是为了假的溢出(循环队列)
+	Q->rear = (Q->rear + 1)%MaxSize; //这里取余是为了假的溢出(循环队列) 比如说rear和front都等于9了，
+	                                 //然后最大的容量为10，那入队的时候rear后移，就跑到0的位置了，更充分利用空间
 	return true;
 }
 
