@@ -49,7 +49,7 @@ void BuildMaxHeap(int A[], int len);  //建立大根堆
 
 void HeadAdjust(int A[], int k, int len);//将以k为根的子树调整为大根堆
 
-void HeapSort(int A[], int len)
+void HeapSort(int A[], int len)  //把大根堆转换为升序数组
 {
 	BuildMaxHeap(A, len);
 	for (int i = len; i > 1; i--)
