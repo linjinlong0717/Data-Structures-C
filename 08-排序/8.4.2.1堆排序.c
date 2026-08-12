@@ -24,7 +24,7 @@ void BuildMaxHeap(int A[], int len)
 void HeadAjust(int A[], int k, int len)
 {
 	A[0] = A[k];     //暂存子树根结点
-	for (int i = 2 * k; i <= len; i *= 2)
+	for (int i = 2 * k; i <= len; i *= 2)    //若没有0号哨兵位置，那i=2*k+1  i=i*2+1
 	{
 		if (i < len && A[i] < A[i + 1]) i++;  取key较大的子结点下标
 		if (A[0] >= A[i])  break;
