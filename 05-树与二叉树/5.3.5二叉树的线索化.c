@@ -1,10 +1,15 @@
+//二叉树线索化（Threaded Binary Tree）:
+把二叉树中那些闲着的空指针（NULL）利用起来，
+让它们指向遍历序列中的前驱或后继节点。
+
 一、中序线索化
 ThreadNode* pre = NULL;  //全局变量pre，指向当前访问的前驱
 typedef struct ThreadNode
 {
 	ElemType data;
 	struct ThreadNode* lchild, * rchild;
-	int ltag, rtag;
+	bool ltag;  //false表示left指向左孩子，true表示left指向前驱线索
+	bool rtag;  //false表示right指向右孩子，true表示right指向后驱线索
 
 };
 void visit(ThreadNode* q)
@@ -21,6 +26,7 @@ void visit(ThreadNode* q)
 	}
 	pre = q;
 }
+typedef struct ThreadNode* ThreadTree;
 void InThread(ThreadTree T)
 {
 	if (T != NULL)
@@ -50,10 +56,10 @@ void CreateInThread(ThreadTree T)
 三、前序线索化
 void PreThread(ThreadTree T)
 {
+	if (T == NULL) return;
 	visit(T);
 	if (T->ltag == 0)     //注意：这里要判断是否为线索(否则会出现死循环)
-	{
 		PreThread(T->lchild);
-	}
-	PreThread(T->rchild);
+	if(T->rtag == 0)
+	    PreThread(T->rchild);
 }
