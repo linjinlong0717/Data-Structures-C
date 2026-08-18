@@ -4,7 +4,7 @@ typedef struct DNode
 {
 	ElemType data;
 	struct DNode* prior, * next;
-}DNode,*DLinkList;
+}DNode, * DLinkList;
 //初始化双链表                
 bool InitDLinkList(DLinkList* L)
 {
@@ -82,7 +82,7 @@ void DestroyList(DLinkList* L)
 while (p != NULL)
 {
 	//对结点p做相应处理
-	p = p->next; 
+	p = p->next;
 }
 2.前向遍历
 while (p != NULL)  //若不处理头结点，则循环条件改成p->prior!=NULL
