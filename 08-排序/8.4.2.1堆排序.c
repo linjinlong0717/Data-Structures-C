@@ -1,7 +1,7 @@
 一、堆
 1.定义：若n个关键字序列L[1...n]满足下面某一条性质，则称为堆(Heap):
-(1)若满足：L(i)>=L(2i)且L(i)>=L(2i+1) (i<=i<=n/2)  --大根堆(大顶堆)
-(2)若满足：L(i)<=L(2i)且L(i)<=L(2i+1)(i<=i<= n/2)  --小根堆(小顶堆)
+(1)若满足：L(i)>=L(2i)且L(i)>=L(2i+1) (1<=i<=n/2)  --大根堆(大顶堆)
+(2)若满足：L(i)<=L(2i)且L(i)<=L(2i+1)(1<=i<= n/2)  --小根堆(小顶堆)
 
 //大根堆类似完全二叉树，根>=左、右
  小根堆类似完全二叉树，根 <= 左、右
@@ -18,13 +18,13 @@ void BuildMaxHeap(int A[], int len)
 {
 	for (int i = len / 2; i > 0; i--)
 	{
-		HeadAdjust(A, i, len);
+		HeapAdjust(A, i, len);
 	}
 }
-void HeadAjust(int A[], int k, int len)
+void HeapAdjust(int A[], int k, int len)
 {
 	A[0] = A[k];     //暂存子树根结点
-	for (int i = 2 * k; i <= len; i *= 2)    //若没有0号哨兵位置，那i=2*k+1  i=i*2+1
+	for (int i = 2 * k; i <= len; i *= 2)    //若没有0号哨兵位置,数据从0号位置开始，那i=2*k+1  i=i*2+1
 	{
 		if (i < len && A[i] < A[i + 1]) i++;  取key较大的子结点下标
 		if (A[0] >= A[i])  break;
@@ -47,7 +47,7 @@ void HeadAjust(int A[], int k, int len)
 2.堆排序完整代码：
 void BuildMaxHeap(int A[], int len);  //建立大根堆
 
-void HeadAdjust(int A[], int k, int len);//将以k为根的子树调整为大根堆
+void HeapAdjust(int A[], int k, int len);//将以k为根的子树调整为大根堆
 
 void HeapSort(int A[], int len)  //把大根堆转换为升序数组
 {
@@ -81,3 +81,18 @@ n个结点的完全二叉树树高h=log2(n+1)向上取整
 
 4.堆排序是不稳定的
 例如：大根堆 2 1 2 排序后相同元素相对位置改变
+
+三、堆排序的应用
+TopK问题: 给定一组共 n 个数据,找出其中 最大 / 最小的前 K 个元素
+
+例：求最大 K 个元素
+
+法1：固定大小 K 小根堆（流式 TopK）
+- 时间：O(nlog K)
+- 空间：O(K) 
+ 优势：内存压力极小，可以边读数据边处理，不用存全部数据
+
+法2：全部数据构建大根堆，弹出 K 次
+- 时间：O(n + Klog n)
+- 空间： O(n)
+ 硬伤：必须把所有数据存入内存；n 巨大时直接内存溢出
