@@ -20,8 +20,8 @@ int Binary_Search(SSTable L, ElemType key)
 		else
 			low = mid + 1;
 	}
-	return -1;
-}
+	return -1;  //若最终没有找到，则low的位置，就是key应该插入的位置
+}   
 
 3.查找效率分析
 
