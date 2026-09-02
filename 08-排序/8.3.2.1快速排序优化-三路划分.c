@@ -7,23 +7,11 @@ void threewayPartition(vector<int>& v, int low, int high, int& l, int& r)
 	int i = low + 1;
 	while (i <= r)
 	{
-		if (v[i] < pivot)
-		{
-			swap(v[i], v[l]);
-			i++;
-			l++;
-		}
+		if (v[i] < pivot)	swap(v[i++], v[l++]);
 		else
 		{
-			if (v[i] > pivot)
-			{
-				swap(v[i], v[r]);
-				r--;
-			}
-			else
-			{
-				i++;
-			}
+			if (v[i] > pivot) swap(v[i], v[r--]);
+			else	i++;
 		}
 	}
 }
